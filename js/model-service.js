@@ -48,18 +48,13 @@ class ModelService {
             // Clean up tensors
             tensor.dispose();
 
-            // Get all predictions with their emotions
+            // Get the emotion with highest probability
             const emotions = CONFIG.MODEL_CONFIG.emotions;
-            const predictions = emotions.map((emotion, index) => ({
-                emotion,
-                confidence: prediction[index]
-            }));
-
-            // Sort predictions by confidence
-            predictions.sort((a, b) => b.confidence - a.confidence);
-
+            const maxIndex = prediction.indexOf(Math.max(...prediction));
+            
             return {
-                predictions
+                emotion: emotions[maxIndex],
+                confidence: prediction[maxIndex]
             };
         } catch (error) {
             console.error('Error making prediction:', error);
