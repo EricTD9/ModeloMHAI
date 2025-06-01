@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotions Prediction Model Service</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="js/config.js"></script>
+    <script src="js/model-service.js"></script>
+    <script src="js/prediction-api.js"></script>
+</head>
+<body>
+    <h1>Emotions Prediction Model Service</h1>
+    <p>This service provides emotion prediction capabilities using TensorFlow.js.</p>
+    <div id="status">Loading model...</div>
+
+    <script>
+        window.addEventListener('load', async () => {
+            const statusDiv = document.getElementById('status');
+            try {
+                await window.modelService.loadModel();
+                statusDiv.textContent = 'Model service is ready';
+                statusDiv.style.color = 'green';
+            } catch (error) {
+                statusDiv.textContent = 'Failed to initialize model service: ' + error.message;
+                statusDiv.style.color = 'red';
+                console.error('Failed to initialize model service:', error);
+            }
+        });
+    </script>
+</body>
+</html> 
