@@ -1,23 +1,26 @@
 const CONFIG = {
     // Model configuration
     MODEL_CONFIG: {
-        inputShape: [1, 224, 224, 3],  // Standard input shape for emotion detection
-        outputClasses: 7,  // Number of emotion classes
+        inputShape: [1, 299, 299, 3],  // InceptionV3 input shape
+        outputClasses: 5,  // Number of emotion classes
         emotions: [
-            'angry',
-            'disgust',
-            'fear',
-            'happy',
-            'sad',
-            'surprise',
-            'neutral'
-        ]
+            'Enojado',
+            'Asustado',
+            'Feliz',
+            'Neutral',
+            'Triste'
+        ],
+        // ImageNet normalization values
+        normalization: {
+            mean: [0.485, 0.456, 0.406],  // RGB mean
+            std: [0.229, 0.224, 0.225]    // RGB std
+        }
     },
     
     // Model paths
     MODEL_PATHS: {
         model: 'model/model.json',
-        weights: 'model/weights.bin'
+        weights: 'model/group1-shard1of22.bin'
     },
     
     // API endpoints
