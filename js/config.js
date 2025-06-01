@@ -19,8 +19,8 @@ const CONFIG = {
     
     // Model paths
     MODEL_PATHS: {
-        model: 'model/model.json',
-        weights: 'model/group1-shard1of22.bin'
+        model: 'https://erictd9.github.io/ModeloMHAI/model/model.json',
+        weights: 'https://erictd9.github.io/ModeloMHAI/model/group1-shard1of22.bin'
     },
     
     // API endpoints
