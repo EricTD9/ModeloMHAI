@@ -1,12 +1,8 @@
 // Prediction API for emotion detection
-class PredictionAPI {
-    constructor() {
-        this.modelService = window.modelService;
-    }
-
+window.predictionAPI = {
     async predictEmotion(imageElement) {
         try {
-            const prediction = await this.modelService.predict(imageElement);
+            const prediction = await window.modelService.predict(imageElement);
             return {
                 success: true,
                 prediction: prediction
@@ -18,6 +14,12 @@ class PredictionAPI {
                 error: error.message
             };
         }
+    }
+};
+
+class PredictionAPI {
+    constructor() {
+        this.modelService = window.modelService;
     }
 
     // Helper method to convert base64 image to Image element
@@ -45,5 +47,5 @@ class PredictionAPI {
     }
 }
 
-// Create and export a single global instance
+// Create a global instance
 window.predictionAPI = new PredictionAPI(); 
